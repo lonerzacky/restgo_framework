@@ -1,0 +1,54 @@
+<RestClientRequest>
+  <option name="biscuits">
+    <list />
+  </option>
+  <option name="httpMethod" value="POST" />
+  <option name="urlBase" value="http://localhost:5000" />
+  <option name="urlPath" value="insertUser" />
+  <option name="headers">
+    <list>
+      <KeyValuePair>
+        <option name="key" value="Accept" />
+        <option name="value" value="*/*" />
+      </KeyValuePair>
+      <KeyValuePair>
+        <option name="key" value="Cache-Control" />
+        <option name="value" value="no-cache" />
+      </KeyValuePair>
+    </list>
+  </option>
+  <option name="parameters">
+    <list>
+      <KeyValuePair>
+        <option name="key" value="Sysuser_id" />
+        <option name="value" value="1002" />
+      </KeyValuePair>
+      <KeyValuePair>
+        <option name="key" value="Sysrole_kode" />
+        <option name="value" value="00" />
+      </KeyValuePair>
+      <KeyValuePair>
+        <option name="key" value="Sysuser_nama" />
+        <option name="value" value="zackwolf" />
+      </KeyValuePair>
+      <KeyValuePair>
+        <option name="key" value="Sysuser_passw" />
+        <option name="value" value="admin" />
+      </KeyValuePair>
+      <KeyValuePair>
+        <option name="key" value="Sysuser_namalengkap" />
+        <option name="value" value="Zackwolf ABC" />
+      </KeyValuePair>
+      <KeyValuePair>
+        <option name="key" value="Sysuser_email" />
+        <option name="value" value="zackwolf@gmail.com" />
+      </KeyValuePair>
+    </list>
+  </option>
+  <option name="parametersEnabled" value="true" />
+  <option name="haveTextToSend" value="false" />
+  <option name="haveFileToSend" value="false" />
+  <option name="isFileUpload" value="false" />
+  <option name="textToSend" value="" />
+  <option name="filesToSend" value="" />
+</RestClientRequest>
