@@ -1,7 +1,7 @@
 # RestGo Framework
 A Golang framework for restful API
 
-#Installation
+##Installation
 ```bash
 $ go get -u github.com/gin-gonic/gin
 $ go get -u github.com/jinzhu/gorm
