@@ -24,6 +24,7 @@ func SetupRouter() *gin.Engine {
 	r.DELETE("/deleteUser/:sysuser_id", controllers.DeleteUser)
 
 	r.POST("/verifyLogin", controllers.VerifyLogin)
+	r.POST("/changePassword", controllers.ChangePassword)
 
 	return r
 }
