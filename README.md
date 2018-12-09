@@ -32,5 +32,6 @@ This will start the application  Just open **http://localhost:5000**.
 - Model based
 - Helper JSON format
 
+## Database Sample
 ![alt tag](https://github.com/lonerzacky/restgo_framework/blob/master/diagram.png)
 
