@@ -23,5 +23,7 @@ func SetupRouter() *gin.Engine {
 	r.PUT("/updateUser/:sysuser_id", controllers.UpdateUser)
 	r.DELETE("/deleteUser/:sysuser_id", controllers.DeleteUser)
 
+	r.POST("/verifyLogin", controllers.VerifyLogin)
+
 	return r
 }
