@@ -24,7 +24,25 @@ Edit _.env_ file and setup an application config
  go run main.go
 </pre>
 This will start the application  Just open **http://localhost:5000**.
-  
+
+##Request Headers
+<table>
+    <thead>
+        <tr>
+            <th><strong>Required</strong></th>
+            <th><strong>Key</strong></th>
+            <th><strong>Value</strong></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Yes</td>
+            <td>Content-Type</td>
+            <td>application/x-www-form-urlencoded</td>
+        </tr>
+    </tbody>
+</table>
+
 ## Features
 - env configuration
 - Controller based
