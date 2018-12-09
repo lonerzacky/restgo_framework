@@ -20,6 +20,7 @@ func ListUser(context *gin.Context) {
 func InsertUser(context *gin.Context) {
 	var sys_user models.Sys_user
 	err := context.Bind(&sys_user)
+	sys_user.Sysuser_passw = functions.CreateHash(sys_user.Sysuser_passw)
 	if err != nil {
 		log.Fatal("Error Binding")
 	}
