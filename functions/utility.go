@@ -1,5 +1,10 @@
 package functions
 
+import (
+	"crypto/sha1"
+	"encoding/hex"
+)
+
 func GetResponse(response_code string, response_message string) interface{} {
 	type Response struct {
 		Response_code    string `json:"response_code"`
@@ -26,4 +31,9 @@ func GetResponseWithData(response_code string, response_message string, response
 		response_data,
 	}
 	return result
+}
+func CreateHash(key string) string {
+	hasher := sha1.New()
+	hasher.Write([]byte(key))
+	return hex.EncodeToString(hasher.Sum(nil))
 }
