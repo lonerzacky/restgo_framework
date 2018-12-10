@@ -21,6 +21,11 @@ func SetupRouter() *gin.Engine {
 	r.PUT("/updateRole/:sysrole_kode", controllers.UpdateRole)
 	r.DELETE("/deleteRole/:sysrole_kode", controllers.DeleteRole)
 
+	r.GET("/listModul", controllers.ListModul)
+	r.POST("/insertModul", controllers.InsertModul)
+	r.PUT("/updateModul/:sysmodul_kode", controllers.UpdateModul)
+	r.DELETE("/deleteModul/:sysmodul_kode", controllers.DeleteModul)
+
 	r.GET("/listUser", controllers.ListUser)
 	r.POST("/insertUser", controllers.InsertUser)
 	r.PUT("/updateUser/:sysuser_id", controllers.UpdateUser)
