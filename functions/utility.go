@@ -5,30 +5,30 @@ import (
 	"encoding/hex"
 )
 
-func GetResponse(response_code string, response_message string) interface{} {
+func GetResponse(responseCode string, responseMessage string) interface{} {
 	type Response struct {
-		Response_code    string `json:"response_code"`
-		Response_message string `json:"response_message"`
+		ResponseCode    string `json:"response_code"`
+		ResponseMessage string `json:"response_message"`
 	}
 
 	result := Response{
-		response_code,
-		response_message,
+		responseCode,
+		responseMessage,
 	}
 	return result
 }
 
-func GetResponseWithData(response_code string, response_message string, response_data interface{}) interface{} {
+func GetResponseWithData(responseCode string, responseMessage string, responseData interface{}) interface{} {
 	type Response struct {
-		Response_code    string      `json:"response_code"`
-		Response_message string      `json:"response_message"`
-		Response_data    interface{} `json:"response_data"`
+		ResponseCode    string      `json:"response_code"`
+		ResponseMessage string      `json:"response_message"`
+		ResponseData    interface{} `json:"response_data"`
 	}
 
 	result := Response{
-		response_code,
-		response_message,
-		response_data,
+		responseCode,
+		responseMessage,
+		responseData,
 	}
 	return result
 }
