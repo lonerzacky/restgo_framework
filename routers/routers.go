@@ -8,10 +8,13 @@ import (
 )
 
 func SetupRouter() *gin.Engine {
-	r := gin.Default()
+	r := gin.New()
 	r.GET("/", func(c *gin.Context) {
 		c.JSON(200, functions.GetResponse("00", "Service RestFul API GoLang Version "+os.Getenv("APP_VERSION")))
 	})
+
+	r.Use(gin.Logger())
+	r.Use(gin.Recovery())
 
 	r.GET("/listRole", controllers.ListRole)
 	r.POST("/insertRole", controllers.InsertRole)
