@@ -8,7 +8,7 @@ import (
 )
 
 func VerifyLogin(context *gin.Context) {
-	var sysUser models.Sys_user
+	var sysUser models.SysUser
 	var Username = context.PostForm("Username")
 	var Password = context.PostForm("Password")
 	var count int

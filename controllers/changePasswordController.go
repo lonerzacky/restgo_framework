@@ -8,7 +8,7 @@ import (
 )
 
 func ChangePassword(context *gin.Context) {
-	var sysUser models.Sys_user
+	var sysUser models.SysUser
 	var SysuserId = context.PostForm("Sysuser_id")
 	var OldPassword = context.PostForm("OldPassword")
 	var NewPassword = context.PostForm("NewPassword")
@@ -16,7 +16,7 @@ func ChangePassword(context *gin.Context) {
 	if result.RecordNotFound() {
 		context.JSON(http.StatusOK, functions.GetResponseWithData("01", "NO MATCHING USER ID", "Record Not Found"))
 	} else {
-		if sysUser.Sysuser_passw == functions.CreateHash(OldPassword) {
+		if sysUser.SysuserPassw == functions.CreateHash(OldPassword) {
 			resultUpdate := db.Model(&sysUser).Update("sysuser_passw", functions.CreateHash(NewPassword)).Where("sysuser_id", SysuserId)
 			context.JSON(http.StatusOK, functions.GetResponseWithData("00", "UBAH PASSWORD SUKSES", resultUpdate))
 		} else {

@@ -12,7 +12,7 @@ import (
 var db = database.ConnectDB()
 
 func ListRole(context *gin.Context) {
-	var sysRole []models.Sys_role
+	var sysRole []models.SysRole
 	if err := db.Find(&sysRole).Error; err != nil {
 		context.JSON(http.StatusOK, functions.GetResponseWithData("01", "GET LIST ROLE GAGAL", err))
 	} else {
@@ -21,7 +21,7 @@ func ListRole(context *gin.Context) {
 }
 
 func InsertRole(context *gin.Context) {
-	var sysRole models.Sys_role
+	var sysRole models.SysRole
 	err := context.Bind(&sysRole)
 	if err != nil {
 		log.Fatal("Error Binding")
@@ -35,7 +35,7 @@ func InsertRole(context *gin.Context) {
 }
 
 func UpdateRole(context *gin.Context) {
-	var sysRole models.Sys_role
+	var sysRole models.SysRole
 	id := context.Params.ByName("sysrole_kode")
 	if err := db.Where("sysrole_kode = ?", id).First(&sysRole).Error; err != nil {
 		context.JSON(http.StatusOK, functions.GetResponseWithData("01", "UPDATE ROLE GAGAL", err))
@@ -54,7 +54,7 @@ func UpdateRole(context *gin.Context) {
 }
 
 func DeleteRole(context *gin.Context) {
-	var sysRole models.Sys_role
+	var sysRole models.SysRole
 	id := context.Params.ByName("sysrole_kode")
 	var result = db.Where("sysrole_kode = ?", id).Delete(&sysRole)
 	if err := result.Error; err != nil {

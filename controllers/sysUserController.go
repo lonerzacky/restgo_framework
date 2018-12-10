@@ -9,7 +9,7 @@ import (
 )
 
 func ListUser(context *gin.Context) {
-	var sysUser []models.Sys_user
+	var sysUser []models.SysUser
 	if err := db.Model(&sysUser).Select("sysuser_id,sys_role.sysrole_kode, sysrole_nama, sysuser_nama, sysuser_namalengkap, sysuser_email").Joins("JOIN sys_role ON sys_role.sysrole_kode = sys_user.sysrole_kode").Scan(&sysUser).Error; err != nil {
 		context.JSON(http.StatusOK, functions.GetResponseWithData("01", "GET LIST USER GAGAL", err))
 	} else {
@@ -18,9 +18,9 @@ func ListUser(context *gin.Context) {
 }
 
 func InsertUser(context *gin.Context) {
-	var sysUser models.Sys_user
+	var sysUser models.SysUser
 	err := context.Bind(&sysUser)
-	sysUser.Sysuser_passw = functions.CreateHash(sysUser.Sysuser_passw)
+	sysUser.SysuserPassw = functions.CreateHash(sysUser.SysuserPassw)
 	if err != nil {
 		log.Fatal("Error Binding")
 	}
@@ -33,7 +33,7 @@ func InsertUser(context *gin.Context) {
 }
 
 func UpdateUser(context *gin.Context) {
-	var sysUser models.Sys_user
+	var sysUser models.SysUser
 	id := context.Params.ByName("sysuser_id")
 	if err := db.Where("sysuser_id = ?", id).First(&sysUser).Error; err != nil {
 		context.JSON(http.StatusOK, functions.GetResponseWithData("01", "UPDATE USER GAGAL", err))
@@ -52,7 +52,7 @@ func UpdateUser(context *gin.Context) {
 }
 
 func DeleteUser(context *gin.Context) {
-	var sysUser models.Sys_user
+	var sysUser models.SysUser
 	id := context.Params.ByName("sysuser_id")
 	var result = db.Where("sysuser_id = ?", id).Delete(&sysUser)
 	if err := result.Error; err != nil {
