@@ -9,7 +9,7 @@ import (
 )
 
 func ListModul(context *gin.Context) {
-	var sysModul []models.Sys_modul
+	var sysModul []models.SysModul
 	if err := db.Find(&sysModul).Error; err != nil {
 		context.JSON(http.StatusOK, functions.GetResponseWithData("01", "GET LIST MODUL GAGAL", err))
 	} else {
@@ -18,7 +18,7 @@ func ListModul(context *gin.Context) {
 }
 
 func InsertModul(context *gin.Context) {
-	var sysModul models.Sys_modul
+	var sysModul models.SysModul
 	err := context.Bind(&sysModul)
 	if err != nil {
 		log.Fatal("Error Binding")
@@ -31,7 +31,7 @@ func InsertModul(context *gin.Context) {
 }
 
 func UpdateModul(context *gin.Context) {
-	var sysModul models.Sys_modul
+	var sysModul models.SysModul
 	id := context.Params.ByName("sysmodul_kode")
 	if err := db.Where("sysmodul_kode = ?", id).First(&sysModul).Error; err != nil {
 		context.JSON(http.StatusOK, functions.GetResponseWithData("01", "UPDATE MODUL GAGAL", err))
@@ -50,7 +50,7 @@ func UpdateModul(context *gin.Context) {
 }
 
 func DeleteModul(context *gin.Context) {
-	var sysModul models.Sys_modul
+	var sysModul models.SysModul
 	id := context.Params.ByName("sysmodul_kode")
 	var result = db.Where("sysmodul_kode = ?", id).Delete(&sysModul)
 	if err := result.Error; err != nil {
