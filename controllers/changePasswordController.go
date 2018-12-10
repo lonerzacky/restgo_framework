@@ -9,7 +9,7 @@ import (
 
 func ChangePassword(context *gin.Context) {
 	var sysUser models.SysUser
-	var SysuserId = context.PostForm("Sysuser_id")
+	var SysuserId = context.PostForm("SysuserId")
 	var OldPassword = context.PostForm("OldPassword")
 	var NewPassword = context.PostForm("NewPassword")
 	result := db.Select("sysuser_passw").Where("sysuser_id = ?", SysuserId).Find(&sysUser)
