@@ -1,9 +1,13 @@
 package functions
 
 import (
+	"../database"
+	"../models"
 	"crypto/sha1"
 	"encoding/hex"
 )
+
+var db = database.ConnectDB()
 
 func GetResponse(responseCode string, responseMessage string) interface{} {
 	type Response struct {
@@ -15,6 +19,7 @@ func GetResponse(responseCode string, responseMessage string) interface{} {
 		responseCode,
 		responseMessage,
 	}
+	CreateLogs("tes", result)
 	return result
 }
 
@@ -36,4 +41,12 @@ func CreateHash(key string) string {
 	hasher := sha1.New()
 	hasher.Write([]byte(key))
 	return hex.EncodeToString(hasher.Sum(nil))
+}
+
+func CreateLogs(parameters string, responses interface{}) interface{} {
+	var logs models.Logs
+	logs.Parameters = parameters
+	logs.Responses = responses
+	result := db.Create(&logs)
+	return result
 }
