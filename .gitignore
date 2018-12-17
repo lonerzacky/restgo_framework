@@ -5,3 +5,7 @@
 .idea/modules.xml
 .idea/restgo_framework.iml
 .idea/workspace.xml
+.idea/dataSources.local.xml
+.idea/dataSources/
+.idea/dictionaries/
+main.exe
