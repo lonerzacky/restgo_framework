@@ -1,13 +1,9 @@
 package functions
 
 import (
-	"../database"
-	"../models"
 	"crypto/sha1"
 	"encoding/hex"
 )
-
-var db = database.ConnectDB()
 
 func GetResponse(responseCode string, responseMessage string) interface{} {
 	type Response struct {
@@ -19,7 +15,6 @@ func GetResponse(responseCode string, responseMessage string) interface{} {
 		responseCode,
 		responseMessage,
 	}
-	CreateLogs("tes", result)
 	return result
 }
 
