@@ -42,11 +42,3 @@ func CreateHash(key string) string {
 	hasher.Write([]byte(key))
 	return hex.EncodeToString(hasher.Sum(nil))
 }
-
-func CreateLogs(parameters string, responses interface{}) interface{} {
-	var logs models.Logs
-	logs.Parameters = parameters
-	logs.Responses = responses
-	result := db.Create(&logs)
-	return result
-}
