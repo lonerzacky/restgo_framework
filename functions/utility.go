@@ -3,6 +3,7 @@ package functions
 import (
 	"crypto/sha1"
 	"encoding/hex"
+	"net"
 )
 
 func GetResponse(responseCode string, responseMessage string) interface{} {
@@ -43,4 +44,20 @@ func CreateHash(key string) string {
 	hasher := sha1.New()
 	hasher.Write([]byte(key))
 	return hex.EncodeToString(hasher.Sum(nil))
+}
+
+func GetLocalIP() string {
+	addrs, err := net.InterfaceAddrs()
+	if err != nil {
+		return ""
+	}
+	for _, address := range addrs {
+		// check the address type and if it is not a loopback the display it
+		if ipnet, ok := address.(*net.IPNet); ok && !ipnet.IP.IsLoopback() {
+			if ipnet.IP.To4() != nil {
+				return ipnet.IP.String()
+			}
+		}
+	}
+	return ""
 }
