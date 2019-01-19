@@ -15,7 +15,6 @@ func SetupRouter() *gin.Engine {
 
 	r.Use(gin.Logger())
 	r.Use(gin.Recovery())
-	r.Use(functions.CreateLog())
 
 	r.GET("/listRole", controllers.ListRole)
 	r.POST("/insertRole", controllers.InsertRole)

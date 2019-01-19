@@ -30,7 +30,6 @@ func GetResponseWithData(responseCode string, responseMessage string, responseDa
 		responseMessage,
 		responseData,
 	}
-	CreateLog()
 	return result
 }
 func CreateHash(key string) string {
