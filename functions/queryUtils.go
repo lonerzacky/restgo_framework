@@ -9,10 +9,11 @@ import (
 
 var db = database.ConnectDB()
 
-func CreateLog(status string) (context *gin.Context) {
-	tx := db.Begin()
-	tx.Exec("INSERT INTO logservice(uri,method,params,ip_address,request_time,response,status) VALUES (?,?,?,?,?,?,?)",
-		"url", "aa", "aa", GetLocalIP(), jodaTime.Format("YYYY-MM-dd hh:mm:ss", time.Now()), "aa", status)
-	tx.Commit()
-	return context
+func CreateLog() gin.HandlerFunc {
+	return func(c *gin.Context) {
+		tx := db.Begin()
+		tx.Exec("INSERT INTO logservice(request_url,request_api,method,params,request_time,response,status) VALUES (?,?,?,?,?,?,?)",
+			c.Request.Host, c.Request.URL.String(), c.Request.Method, "params", jodaTime.Format("YYYY-MM-dd hh:mm:ss", time.Now()), "response", "status")
+		tx.Commit()
+	}
 }

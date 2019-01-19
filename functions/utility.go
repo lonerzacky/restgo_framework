@@ -30,13 +30,7 @@ func GetResponseWithData(responseCode string, responseMessage string, responseDa
 		responseMessage,
 		responseData,
 	}
-	var status = ""
-	if responseCode == "00" {
-		status = "success"
-	} else {
-		status = "failed"
-	}
-	CreateLog(status)
+	CreateLog()
 	return result
 }
 func CreateHash(key string) string {
