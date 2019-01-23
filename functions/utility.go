@@ -50,15 +50,16 @@ func GetResponseWithDataLogging(context *gin.Context, responseCode string, respo
 	RequestUrl := context.Request.Host
 	RequestApi := context.Request.URL.String()
 	Method := context.Request.Method
-	Params := context.Request.Form.Encode()
+	Params := context.Request.Form
 	ResponseApi, _ := json.Marshal(result)
+	ParamsJSON, _ := json.Marshal(Params)
 	Status := ""
 	if responseCode == "00" {
 		Status = "success"
 	} else {
 		Status = "failed"
 	}
-	CreateLog(RequestUrl, RequestApi, Method, Params, ResponseApi, Status)
+	CreateLog(RequestUrl, RequestApi, Method, ParamsJSON, ResponseApi, Status)
 	return result
 }
 
