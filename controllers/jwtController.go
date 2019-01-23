@@ -6,7 +6,6 @@ import (
 	"github.com/dgrijalva/jwt-go"
 	"github.com/gin-gonic/gin"
 	"net/http"
-	"os"
 	"strings"
 )
 
@@ -28,41 +27,6 @@ func CreateTokenEndpoint(c *gin.Context) {
 		fmt.Println(e)
 	}
 	c.JSON(http.StatusOK, functions.GetResponseWithData("00", "TOKEN SUCCESSFULLY CREATED", tokenString))
-}
-
-func GetTokenFromConfig(c *gin.Context) {
-	var user Credential
-	err := c.Bind(&user)
-	if err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{
-			"status":  http.StatusBadRequest,
-			"message": "Can't Bind Struct",
-		})
-	}
-	if user.Username != os.Getenv("JWT_USERNAME") {
-		c.JSON(http.StatusUnauthorized, gin.H{
-			"status":  http.StatusUnauthorized,
-			"message": "Wrong Username or Password",
-		})
-	} else {
-		if user.Password != os.Getenv("JWT_PASSWORD") {
-			c.JSON(http.StatusUnauthorized, gin.H{
-				"status":  http.StatusUnauthorized,
-				"message": "Wrong Username or Password",
-			})
-		}
-	}
-	sign := jwt.New(jwt.GetSigningMethod("HS256"))
-	token, err := sign.SignedString([]byte("secret"))
-	if err != nil {
-		c.JSON(http.StatusInternalServerError, gin.H{
-			"message": err.Error(),
-		})
-		c.Abort()
-	}
-	c.JSON(http.StatusOK, gin.H{
-		"token": token,
-	})
 }
 
 func AuthJWT(c *gin.Context) {
