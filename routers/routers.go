@@ -29,13 +29,15 @@ func SetupRouter() *gin.Engine {
 	r.POST("/insertRmodul", controllers.InsertRmodul)
 	r.DELETE("/deleteRmodul/:kodeRole/:kodeModul", controllers.DeleteRmodul)
 
-	r.GET("/listUser", controllers.ListUser)
+	r.GET("/listUser", controllers.AuthJWT, controllers.ListUser)
 	r.POST("/insertUser", controllers.InsertUser)
 	r.PUT("/updateUser/:sysuser_id", controllers.UpdateUser)
 	r.DELETE("/deleteUser/:sysuser_id", controllers.DeleteUser)
 
 	r.POST("/verifyLogin", controllers.VerifyLogin)
 	r.POST("/changePassword", controllers.ChangePassword)
+	r.POST("/getTokenFromConfig", controllers.GetTokenFromConfig)
+	r.POST("/createToken", controllers.CreateTokenEndpoint)
 
 	return r
 }
