@@ -24,9 +24,9 @@ func InsertModul(context *gin.Context) {
 		log.Fatal("Error Binding")
 	}
 	if err := db.Create(&sysModul).Error; err != nil {
-		context.JSON(http.StatusOK, functions.GetResponseWithData("01", "TAMBAH MODUL GAGAL", err))
+		context.JSON(http.StatusOK, functions.GetResponseWithDataLogging(context, "01", "TAMBAH MODUL GAGAL", err))
 	} else {
-		context.JSON(http.StatusOK, functions.GetResponseWithData("00", "TAMBAH MODUL SUKSES", sysModul))
+		context.JSON(http.StatusOK, functions.GetResponseWithDataLogging(context, "00", "TAMBAH MODUL SUKSES", sysModul))
 	}
 }
 
@@ -34,7 +34,7 @@ func UpdateModul(context *gin.Context) {
 	var sysModul models.SysModul
 	id := context.Params.ByName("sysmodul_kode")
 	if err := db.Where("sysmodul_kode = ?", id).First(&sysModul).Error; err != nil {
-		context.JSON(http.StatusOK, functions.GetResponseWithData("01", "UPDATE MODUL GAGAL", err))
+		context.JSON(http.StatusOK, functions.GetResponseWithDataLogging(context, "01", "UPDATE MODUL GAGAL", err))
 		return
 	}
 	err := context.Bind(&sysModul)
@@ -42,9 +42,9 @@ func UpdateModul(context *gin.Context) {
 		log.Fatal("Error Binding")
 	}
 	if err := db.Save(&sysModul).Error; err != nil {
-		context.JSON(http.StatusOK, functions.GetResponseWithData("01", "UPDATE MODUL GAGAL", err))
+		context.JSON(http.StatusOK, functions.GetResponseWithDataLogging(context, "01", "UPDATE MODUL GAGAL", err))
 	} else {
-		context.JSON(http.StatusOK, functions.GetResponseWithData("00", "UPDATE MODUL SUKSES", sysModul))
+		context.JSON(http.StatusOK, functions.GetResponseWithDataLogging(context, "00", "UPDATE MODUL SUKSES", sysModul))
 	}
 
 }
@@ -54,9 +54,9 @@ func DeleteModul(context *gin.Context) {
 	id := context.Params.ByName("sysmodul_kode")
 	var result = db.Where("sysmodul_kode = ?", id).Delete(&sysModul)
 	if err := result.Error; err != nil {
-		context.JSON(http.StatusOK, functions.GetResponseWithData("01", "DELETE MODUL GAGAL", err))
+		context.JSON(http.StatusOK, functions.GetResponseWithDataLogging(context, "01", "DELETE MODUL GAGAL", err))
 	} else {
-		context.JSON(http.StatusOK, functions.GetResponseWithData("00", "DELETE MODUL SUKSES", result))
+		context.JSON(http.StatusOK, functions.GetResponseWithDataLogging(context, "00", "DELETE MODUL SUKSES", result))
 
 	}
 

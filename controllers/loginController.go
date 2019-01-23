@@ -18,8 +18,8 @@ func VerifyLogin(context *gin.Context) {
 		Where("sysuser_nama = ? AND sysuser_passw = ?", Username, Password).
 		Find(&sysUser).Count(&count)
 	if result.RecordNotFound() {
-		context.JSON(http.StatusOK, functions.GetResponseWithData("01", "LOGIN GAGAL : USERNAME ATAU PASSWORD SALAH", "Record Not Found"))
+		context.JSON(http.StatusOK, functions.GetResponseWithDataLogging(context, "01", "LOGIN GAGAL : USERNAME ATAU PASSWORD SALAH", "Record Not Found"))
 	} else {
-		context.JSON(http.StatusOK, functions.GetResponseWithData("00", "LOGIN SUKSES", result.Value))
+		context.JSON(http.StatusOK, functions.GetResponseWithDataLogging(context, "00", "LOGIN SUKSES", result.Value))
 	}
 }

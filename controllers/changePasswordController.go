@@ -14,13 +14,13 @@ func ChangePassword(context *gin.Context) {
 	var NewPassword = context.PostForm("NewPassword")
 	result := db.Select("sysuser_passw").Where("sysuser_id = ?", SysuserId).Find(&sysUser)
 	if result.RecordNotFound() {
-		context.JSON(http.StatusOK, functions.GetResponseWithData("01", "NO MATCHING USER ID", "Record Not Found"))
+		context.JSON(http.StatusOK, functions.GetResponseWithDataLogging(context, "01", "NO MATCHING USER ID", "Record Not Found"))
 	} else {
 		if sysUser.SysuserPassw == functions.CreateHash(OldPassword) {
 			resultUpdate := db.Model(&sysUser).Update("sysuser_passw", functions.CreateHash(NewPassword)).Where("sysuser_id", SysuserId)
-			context.JSON(http.StatusOK, functions.GetResponseWithData("00", "UBAH PASSWORD SUKSES", resultUpdate))
+			context.JSON(http.StatusOK, functions.GetResponseWithDataLogging(context, "00", "UBAH PASSWORD SUKSES", resultUpdate))
 		} else {
-			context.JSON(http.StatusOK, functions.GetResponseWithData("01", "PASSWORD LAMA TIDAK SAMA", ""))
+			context.JSON(http.StatusOK, functions.GetResponseWithDataLogging(context, "01", "PASSWORD LAMA TIDAK SAMA", ""))
 		}
 
 	}
