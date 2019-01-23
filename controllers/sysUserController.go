@@ -9,7 +9,7 @@ import (
 )
 
 func ListUser(context *gin.Context) {
-	var sysUser []models.SysUser
+	var sysUser []models.GetSysUser
 	if err := db.Model(&sysUser).Select("sysuser_id,sys_role.sysrole_kode, sysrole_nama, sysuser_nama, sysuser_namalengkap, sysuser_email").Joins("JOIN sys_role ON sys_role.sysrole_kode = sys_user.sysrole_kode").Scan(&sysUser).Error; err != nil {
 		context.JSON(http.StatusOK, functions.GetResponseWithData("01", "GET LIST USER GAGAL", err))
 	} else {
