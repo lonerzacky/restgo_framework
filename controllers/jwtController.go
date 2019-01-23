@@ -17,7 +17,6 @@ type Credential struct {
 func CreateTokenEndpoint(c *gin.Context) {
 	var Username = c.PostForm("Username")
 	var Password = c.PostForm("Password")
-
 	token := jwt.NewWithClaims(jwt.SigningMethodHS256, jwt.MapClaims{
 		"username": Username,
 		"password": Password,
