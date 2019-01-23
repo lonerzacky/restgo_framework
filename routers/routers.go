@@ -36,7 +36,7 @@ func SetupRouter() *gin.Engine {
 
 	r.POST("/verifyLogin", controllers.VerifyLogin)
 	r.POST("/changePassword", controllers.ChangePassword)
-	r.POST("/createToken", controllers.CreateTokenEndpoint)
+	r.GET("/createToken", controllers.CreateTokenEndpoint)
 
 	return r
 }

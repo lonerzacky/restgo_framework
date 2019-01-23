@@ -9,18 +9,8 @@ import (
 	"strings"
 )
 
-type Credential struct {
-	Username string `json:"username"`
-	Password string `json:"password"`
-}
-
 func CreateTokenEndpoint(c *gin.Context) {
-	var Username = c.PostForm("Username")
-	var Password = c.PostForm("Password")
-	token := jwt.NewWithClaims(jwt.SigningMethodHS256, jwt.MapClaims{
-		"username": Username,
-		"password": Password,
-	})
+	token := jwt.NewWithClaims(jwt.SigningMethodHS256, jwt.MapClaims{})
 	tokenString, e := token.SignedString([]byte("secret"))
 	if e != nil {
 		fmt.Println(e)
