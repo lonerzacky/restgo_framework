@@ -16,26 +16,26 @@ func SetupRouter() *gin.Engine {
 	r.Use(gin.Logger())
 	r.Use(gin.Recovery())
 
-	r.GET("/listRole", controllers.ListRole)
-	r.POST("/insertRole", controllers.InsertRole)
-	r.PUT("/updateRole/:sysrole_kode", controllers.UpdateRole)
-	r.DELETE("/deleteRole/:sysrole_kode", controllers.DeleteRole)
+	r.GET("/listRole", controllers.AuthJWT, controllers.ListRole)
+	r.POST("/insertRole", controllers.AuthJWT, controllers.InsertRole)
+	r.PUT("/updateRole/:sysrole_kode", controllers.AuthJWT, controllers.UpdateRole)
+	r.DELETE("/deleteRole/:sysrole_kode", controllers.AuthJWT, controllers.DeleteRole)
 
-	r.GET("/listModul", controllers.ListModul)
-	r.POST("/insertModul", controllers.InsertModul)
-	r.PUT("/updateModul/:sysmodul_kode", controllers.UpdateModul)
-	r.DELETE("/deleteModul/:sysmodul_kode", controllers.DeleteModul)
+	r.GET("/listModul", controllers.AuthJWT, controllers.ListModul)
+	r.POST("/insertModul", controllers.AuthJWT, controllers.InsertModul)
+	r.PUT("/updateModul/:sysmodul_kode", controllers.AuthJWT, controllers.UpdateModul)
+	r.DELETE("/deleteModul/:sysmodul_kode", controllers.AuthJWT, controllers.DeleteModul)
 
-	r.POST("/insertRmodul", controllers.InsertRmodul)
-	r.DELETE("/deleteRmodul/:kodeRole/:kodeModul", controllers.DeleteRmodul)
+	r.POST("/insertRmodul", controllers.AuthJWT, controllers.InsertRmodul)
+	r.DELETE("/deleteRmodul/:kodeRole/:kodeModul", controllers.AuthJWT, controllers.DeleteRmodul)
 
 	r.GET("/listUser", controllers.AuthJWT, controllers.ListUser)
-	r.POST("/insertUser", controllers.InsertUser)
-	r.PUT("/updateUser/:sysuser_id", controllers.UpdateUser)
-	r.DELETE("/deleteUser/:sysuser_id", controllers.DeleteUser)
+	r.POST("/insertUser", controllers.AuthJWT, controllers.InsertUser)
+	r.PUT("/updateUser/:sysuser_id", controllers.AuthJWT, controllers.UpdateUser)
+	r.DELETE("/deleteUser/:sysuser_id", controllers.AuthJWT, controllers.DeleteUser)
 
-	r.POST("/verifyLogin", controllers.VerifyLogin)
-	r.POST("/changePassword", controllers.ChangePassword)
+	r.POST("/verifyLogin", controllers.AuthJWT, controllers.VerifyLogin)
+	r.POST("/changePassword", controllers.AuthJWT, controllers.ChangePassword)
 	r.GET("/createToken", controllers.CreateTokenEndpoint)
 
 	return r
