@@ -6,6 +6,7 @@ A Golang framework for restful API. This repository demonstrates the usage of Re
 $ go get -u github.com/gin-gonic/gin
 $ go get -u github.com/jinzhu/gorm
 $ go get -u github.com/joho/godotenv
+$ go get -u github.com/dgrijalva/jwt-go
 ```
 ## Configuration Database
 Edit _.env_ file and setup an application config
