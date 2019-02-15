@@ -10,3 +10,5 @@
 .idea/dictionaries/
 main.exe
 .env
+Gopkg.lock
+vendor/
