@@ -1,10 +1,10 @@
 package controllers
 
 import (
-	"../functions"
-	"../models"
 	"github.com/gin-gonic/gin"
 	"net/http"
+	"restgo_framework/functions"
+	"restgo_framework/models"
 )
 
 func ChangePassword(context *gin.Context) {

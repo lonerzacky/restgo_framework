@@ -1,11 +1,11 @@
 package security
 
 import (
-	"../functions"
 	"fmt"
 	"github.com/dgrijalva/jwt-go"
 	"github.com/gin-gonic/gin"
 	"net/http"
+	"restgo_framework/functions"
 	"strings"
 )
 

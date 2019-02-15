@@ -1,12 +1,12 @@
 package controllers
 
 import (
-	"../database"
-	"../functions"
-	"../models"
 	"github.com/gin-gonic/gin"
 	"log"
 	"net/http"
+	"restgo_framework/database"
+	"restgo_framework/functions"
+	"restgo_framework/models"
 )
 
 var db = database.ConnectDB()

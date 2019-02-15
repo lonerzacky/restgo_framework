@@ -1,10 +1,10 @@
 package main
 
 import (
-	"./routers"
 	"github.com/joho/godotenv"
 	"log"
 	"os"
+	"restgo_framework/routers"
 )
 
 func main() {

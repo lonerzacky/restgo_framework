@@ -1,11 +1,11 @@
 package routers
 
 import (
-	"../controllers"
-	"../functions"
-	"../security"
 	"github.com/gin-gonic/gin"
 	"os"
+	"restgo_framework/controllers"
+	"restgo_framework/functions"
+	"restgo_framework/security"
 )
 
 func SetupRouter() *gin.Engine {

@@ -1,11 +1,11 @@
 package controllers
 
 import (
-	"../functions"
-	"../models"
 	"github.com/gin-gonic/gin"
 	"log"
 	"net/http"
+	"restgo_framework/functions"
+	"restgo_framework/models"
 )
 
 func ListUser(context *gin.Context) {

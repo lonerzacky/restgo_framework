@@ -1,8 +1,8 @@
 package functions
 
 import (
-	"../database"
 	"github.com/vjeantet/jodaTime"
+	"restgo_framework/database"
 	"time"
 )
 
