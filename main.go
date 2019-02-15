@@ -15,5 +15,5 @@ func main() {
 	}
 	r := routers.SetupRouter()
 
-	_ = r.Run(os.Getenv("APP_HOST") + ":" + os.Getenv("APP_PORT"))
+	_ = r.Run(":" + os.Getenv("APP_PORT"))
 }
