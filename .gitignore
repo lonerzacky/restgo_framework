@@ -10,3 +10,4 @@
 .idea/dictionaries/
 main.exe
 vendor/
+!/.env
