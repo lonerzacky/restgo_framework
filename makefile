@@ -7,6 +7,10 @@ go-init:
 	go get -u github.com/golang/dep/cmd/dep && dep init -v && ep ensure -v
 build:
 	docker build -t go-sample:latest .
+start:
+	docker start myGoApp
+restart:
+	docker restart myGoApp
 stop:
 	docker stop myGoApp
 rm-container:
