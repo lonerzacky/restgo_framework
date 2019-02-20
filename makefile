@@ -22,4 +22,4 @@ gobuild:
 transfer:
 	scp .env main makefile ${REMOTE_USERNAME}@${REMOTE_IP}:${REMOTE_DESTINATION}
 docker-scratch:
-	@echo -e "FROM scratch\nADD . .\nCMD ["./main"]" > Dockerfile
+	@echo -e "FROM scratch\nADD . .\nCMD" ['"./main"']"" > Dockerfile
