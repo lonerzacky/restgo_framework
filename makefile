@@ -1,3 +1,7 @@
+REMOTE_USERNAME=root
+REMOTE_IP=10.140.14.90
+REMOTE_DESTINATION=/home/golang/src/restgo_framework
+
 build:
 	docker build -t go-sample:latest .
 stop:
@@ -12,3 +16,7 @@ run:
 	docker run -p 1000:1000 -v C:\Users\wolfz\go\src\restgo_framework\.env:/.env --name myGoApp go-sample
 gobuild:
 	CGO_ENABLED=0 GOOS=linux go build -a -tags netgo -ldflags '-w' -o main
+transfer:
+	scp .env main makefile ${REMOTE_USERNAME}@${REMOTE_IP}:${REMOTE_DESTINATION}
+docker-scratch:
+	@echo -e "FROM scratch\nADD . .\nCMD ["./main"]" > Dockerfile
