@@ -4,7 +4,7 @@ LOCAL_DESTINATION=/home/golang/src/restgo_framework/
 REMOTE_DESTINATION=/home/golang/src/restgo_framework
 
 go-init:
-	go get -u github.com/golang/dep/cmd/dep && dep init -v && ep ensure -v
+	go get -u github.com/golang/dep/cmd/dep && dep init -v && dep ensure -v
 build:
 	docker build -t go-sample:latest .
 start:
