@@ -2,29 +2,34 @@
 A Golang framework for restful API. This repository demonstrates the usage of Restful API within a Golang application.
 
 ## Installation
+##### Without Docker
+1. go dep 
 ```bash
-$ go get -u github.com/gin-gonic/gin
-$ go get -u github.com/jinzhu/gorm
-$ go get -u github.com/joho/godotenv
-$ go get -u github.com/dgrijalva/jwt-go
+$ go get -u github.com/golang/dep/cmd/dep
+$ dep init -v
+$ dep ensure -v
 ```
-## Configuration Database
-Edit _.env_ file and setup an application config
-<pre>
- APP_HOST=localhost
- APP_PORT=5000
- APP_VERSION=1.0.0
- DB_CONNECTION=mysql
- DB_USERNAME=root
- DB_DATABASE=restgo_framework
- DB_PASSWORD=
-</pre>
-  
+2. Create .env file
+```bash
+$ make env-init
+```
+> It will create .env file
+```
+APP_HOST=yourapphost
+APP_DB_HOST=yourdbhost
+APP_PORT=yourapphost
+APP_VERSION=ypurappversion
+DB_CONNECTION=yourdbdriver
+DB_USERNAME=yourdatabaseuser
+DB_DATABASE=yourdatabasename
+DB_PASSWORD=yourdatabasepassword
+DB_PORT=yourdatabaseport
+```
+
 ## Starting App
 <pre>
  go run main.go
 </pre>
-This will start the application  Just open **http://localhost:5000**.
 
 ## Request Headers
 <table>
