@@ -31,6 +31,27 @@ DB_PORT=yourdatabaseport
  go run main.go
 </pre>
 
+##### With Docker
+1. Set Local Path Project in makefile
+```bash
+$ vi makefile
+```
+set local path
+```bash
+$  LOCAL_DESTINATION=/home/golang/src/restgo_framework/
+```
+2. Build image and run application
+```bash
+$  make build 
+$  make run 
+```
+3. start|restart|stop program
+```bash
+$  make start 
+$  make restart 
+$  make stop 
+```
+
 ## Request Headers
 <table>
     <thead>
